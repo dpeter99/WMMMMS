@@ -1,0 +1,18 @@
+$surface: #121212;
+$surface-01dp: scale-color($surface, $lightness: +5%);
+$surface-02dp: scale-color($surface, $lightness: +7%);
+$surface-03dp: scale-color($surface, $lightness: +8%);
+$surface-04dp: scale-color($surface, $lightness: +6%);
+$surface-06dp: scale-color($surface, $lightness: +11%);
+$surface-08dp: scale-color($surface, $lightness: +12%);
+$surface-12dp: scale-color($surface, $lightness: +14%);
+$surface-16dp: scale-color($surface, $lightness: +15%);
+$surface-24dp: scale-color($surface, $lightness: +16%);
+
+$text-on-surface: white;
+
+$primary :#de9e59;
+$seconday: rgb(37, 47, 60);
+
+$text-on-primary: white;
+

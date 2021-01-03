@@ -1,0 +1,265 @@
+@use "./colors"as c;
+@use "./scrollbar";
+
+$theme-colors: (
+  "primary": c.$primary
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+@font-face {
+    font-family: Mono;
+    src: url(./JetBrainsMono-2.001/web/woff2/JetBrainsMono-Regular.woff2);
+}
+
+
+
+html,
+body {
+    height: 100vh;
+    background-color: c.$surface;
+    color: white;
+}
+
+.navbar {
+    background-color: c.$seconday;
+    color: c.$text-on-primary;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+    .container-fluid {
+        justify-content: start;
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        padding: 0px;
+
+        @include media-breakpoint-down(lg) {
+            & {
+                margin-left: 12px;
+            }
+        }
+
+        img {
+            height: 32;
+            padding-right: 12px;
+
+            @include media-breakpoint-down(md) {
+                & {
+                    padding-right: 0;
+                }
+            }
+        }
+
+    }
+
+    a {
+        color: inherit;
+    }
+
+    .search-toggler{
+        margin-left: auto;
+    }
+}
+
+
+main {
+    height: 100vh;
+    width: 100vw;
+    margin-top: -56px;
+
+
+    .content {
+        width: 100%;
+
+        margin-top: 56px;
+
+        display: flex;
+
+
+        &__main {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+
+            height: 100%;
+            flex-grow: 1;
+
+            @include media-breakpoint-down(md) {
+                & {
+                    width: 100%;
+                    margin-left: 0px;
+                }
+            }
+        }
+
+    }
+}
+
+.serach_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-left: 12px;
+    margin-top: 8px;
+
+    &__search {
+        background-color: #bdbdbd;
+        color: black;
+        margin-right: 6px;
+        outline: none;
+        border-radius: 5px;
+        
+
+        input,
+        select {
+            background-color: inherit;
+            border: none;
+            border-radius: 5px;
+            width: 180px;
+
+            height: 32px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+    }
+
+    @include media-breakpoint-down(lg) {
+        & {
+            justify-content: center;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        & {
+            display: none;
+        }
+    }
+
+}
+
+.side-trees {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    max-width: 300px;
+
+    /*border-right: white 1px solid;*/
+
+    .tree {
+        height: 50%;
+
+        &:first-child {
+            margin-top: 0px;
+        }
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+        & {
+            display: none;
+        }
+    }
+}
+
+
+.tree {
+
+
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 14px;
+
+    background-color: c.$surface-01dp;
+    color: white;
+
+
+    &__title {
+        font-size: 24px;
+        padding-bottom: 6px;
+    }
+
+    ul {
+        overflow: auto;
+        margin-bottom: 0;
+        @include scrollbar.md-scrollbar(c.$surface-01dp);
+
+        //background-color: c.$surface-02dp;
+    }
+}
+
+.page {
+
+    margin-top: 12px;
+
+    &__header {
+        font-size: 26px;
+
+        margin-left: 12px;
+        margin-top: 6px;
+        margin-bottom: 12px;
+    }
+}
+
+.class_info {
+    @include scrollbar.md-scrollbar(c.$surface-01dp);
+
+    width: 100%;
+    overflow: auto;
+
+
+    .page__header {
+        font-family: 'Mono';
+    }
+
+    ul {
+        margin: 0;
+        margin-bottom: 12px;
+        margin-left: 24px;
+        margin-right: 24px;
+        padding: 0;
+    }
+
+    .function {
+        display: block;
+
+        padding-left: 12px;
+
+        &__sig {
+            font-size: 20px;
+            font-family: 'Mono';
+
+            margin-top: 6px;
+        }
+
+        &__description {
+            margin-left: 6px;
+        }
+    }
+
+
+}
+
+.side-nav{
+    position: fixed;
+    top: 0;
+    
+    height: 100vh;
+    width: 100%;
+    left: -100%;
+    background-color: white;
+    transition: all 1s ease;
+
+    &.open{
+        left: 0;    
+    }
+}
